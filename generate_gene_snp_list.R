@@ -12,6 +12,8 @@ output_dir <- file.path(getwd(), "output")
 file_path_onek1k <- file.path(input_dir, "OneK1K_modified0.rds")
 onek1k <- readRDS(file_path_onek1k)
 
+cat("Data loaded.\n")
+
 variable_genes <- VariableFeatures(onek1k)
 individuals <- colnames(onek1k@assays[["RNA"]]@counts)
 
@@ -40,5 +42,4 @@ saveRDS(gene_snp_list, file.path(input_dir, "gene_snp_list.rds"))
 cat("\n========================================================\n")
 
 cat("All finished!!!!\n")
-
 
