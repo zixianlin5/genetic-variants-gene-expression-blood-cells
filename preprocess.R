@@ -9,7 +9,7 @@ setwd("")
 input_dir <- file.path(getwd(), "input")
 output_dir <- file.path(getwd(), "output")
 
-cat("Prepared. \n")
+cat("Preparation complete. \n")
 
 # -------------------------------------------------
 
@@ -17,10 +17,11 @@ cat("Prepared. \n")
 file_path_onek1k <- file.path(input_dir, "OneK1K.rds")
 onek1k <- readRDS(file_path_onek1k)
 
-cat("OneK1K1 read.\n")
-str(onek1k)
+cat("Data loaded.\n")
 
 onek1k@assays[["RNA"]]@counts <- onek1k@assays[["RNA"]]@data
+
+# -------------------------------------------------
 
 # run PCA
 cat("Running NormalizeData().\n")
@@ -55,7 +56,6 @@ file.remove(file.path(input_dir, "OneK1K_modified0_unf.rds"))
 saveRDS(onek1k, file = file.path(input_dir, "OneK1K_modified0.rds"))
 
 cat("\n========================================================\n")
-cat("\nPreprocessing completed.")
 
+cat("All finished!!!!")
 
- 
