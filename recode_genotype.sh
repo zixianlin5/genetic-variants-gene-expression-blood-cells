@@ -2,7 +2,7 @@
 #SBATCH --job-name=recode_genotype
 #SBATCH --output=recode_genotype_%A_%a.log
 #SBATCH --error=recode_genotype_%A_%a.err
-#SBATCH --array=1-22   # Adjust this range if you have different chromosome numbers
+#SBATCH --array=1-22
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=32G
