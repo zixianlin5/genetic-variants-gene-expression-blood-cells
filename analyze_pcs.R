@@ -13,15 +13,15 @@ output_dir <- file.path(getwd(), "output")
 
 dim_PCs <- 20
 
-cat("Prepared. \n")
+cat("Preparation complete. \n")
 
 # -------------------------------------------------
 
 # read OneK1K
-cat("Reading OneK1K1_modified0.\n")
 file_path_onek1k <- file.path(input_dir, "OneK1K_modified.rds")
 onek1k <- readRDS(file_path_onek1k)
-str(onek1k)
+
+cat("Data loaded.\n")
 
 # -------------------------------------------------
 
@@ -147,5 +147,6 @@ ggsave(file.path(output_dir, "PCA_Plots.png"),
 # -------------------------------------------------
 
 cat("\n========================================================\n")
+
 cat("All finished!!!!")
 
