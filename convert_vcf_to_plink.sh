@@ -5,7 +5,7 @@
 #SBATCH --array=1-22   
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=4
-#SBATCH --mem=30G
+#SBATCH --mem=32G
 #SBATCH --partition=standard-cpu
 
 # Ensure the PATH includes the directory where PLINK is installed
