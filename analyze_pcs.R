@@ -1,4 +1,4 @@
-library(Matrix, lib.loc = getwd())
+library(Matrix)
 library(Seurat)
 library(SeuratObject)
 library(ggplot2)
@@ -143,8 +143,6 @@ final_plot <- combined_plot +
 ggsave(file.path(output_dir, "PCA_Plots.png"),
        plot = final_plot, 
        width = 18, height = 20, dpi = 300)
-
-# -------------------------------------------------
 
 cat("\n========================================================\n")
 
