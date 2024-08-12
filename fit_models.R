@@ -427,19 +427,19 @@ save_data_to_rds <- function(data, file_name) {
   cat(paste("Saved", file_name, "to", rds_file_name, "\n"))
 }
 
-save_data_to_rds(fitted_df_null, "fitted_value_null_t")
+save_data_to_rds(fitted_df_null, "fitted_value_null")
 rm(fitted_df_null)
 
-save_data_to_rds(fitted_df_full, "fitted_value_full_t")
+save_data_to_rds(fitted_df_full, "fitted_value_full")
 rm(fitted_df_full)
 
-save_data_to_rds(fitted_df_interaction, "fitted_value_interaction_t")
+save_data_to_rds(fitted_df_interaction, "fitted_value_interaction")
 rm(fitted_df_interaction)
 
-save_data_to_rds(missing_data_df, "missing_data_t")
+save_data_to_rds(missing_data_df, "missing_data")
 rm(missing_data_df)
 
-save_data_to_rds(model_comparison_df, "model_comparison_t")
+save_data_to_rds(model_comparison_df, "model_comparison")
 rm(model_comparison_df)
 
 cat("\n========================================================\n")
