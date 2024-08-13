@@ -425,7 +425,7 @@ colnames(fitted_df_interaction) <- cells
 cat("\nSaving data frames... \n")
 
 save_data_to_rds <- function(data, file_name) {
-  rds_file_name <- file.path(output_dir, paste0(file_name, ".rds"))
+  rds_file_name <- file.path(input_dir, paste0(file_name, ".rds"))
   saveRDS(data, rds_file_name, compress = "gzip")
   cat(paste("Saved", file_name, "to", rds_file_name, "\n"))
 }
