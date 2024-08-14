@@ -26,18 +26,18 @@ for (i in 1:n) {
   
   if (p_val_null_vs_full >= adjusted_threshold && p_val_full_vs_interaction >= adjusted_threshold) {
     target_df[gene_id, ] <- fitted_df_null[gene_id, ]
-    model_log_df$used_model[i] <- "Model 1: Basic Model"
+    model_log_df$used_model[i] <- "Model 1: Basic model"
   } else if (p_val_null_vs_full < adjusted_threshold && p_val_full_vs_interaction >= adjusted_threshold) {
     target_df[gene_id, ] <- fitted_df_full[gene_id, ]
-    model_log_df$used_model[i] <- "Model 2: Model with Genotypes"
+    model_log_df$used_model[i] <- "Model 2: Model with genotypes"
   } else if (p_val_full_vs_interaction < adjusted_threshold) {
     target_df[gene_id, ] <- fitted_df_interaction[gene_id, ]
     model_log_df$used_model[i] <- "Model 3: Model with interactions"
   } else {
     # Fallback condition in case none of the above conditions are met
     target_df[gene_id, ] <- fitted_df_full[gene_id, ]  # Default to full model
-    model_log_df$used_model[i] <- "Model 2: Model with Genotypes (Default)"
-    cat("Warning: None of the conditions were met for gene ID ", gene_id, ". Defaulting to full model.\n")
+    model_log_df$used_model[i] <- "Model 2: Model with genotypes (Default)"
+    cat("Warning: None of the conditions were met for gene ID ", gene_id, ". Defaulting to the model with genotypes.\n")
   }
   
   progress_percentage <- round((i / n) * 100, 2)
