@@ -56,12 +56,15 @@ model_count <- as.data.frame(table(model_log_df$used_model))
 colnames(model_count) <- c("Model", "Count")
 
 plot <- ggplot(model_count, aes(x = Model, y = Count, fill = Model)) +
-  geom_bar(stat = "identity", width = 0.6) +
+  geom_bar(stat = "identity", width = 0.4, position = position_dodge(width = 0.5)) +
+  geom_text(aes(label = Count), vjust = -0.3, size = 4.7) +
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 0, hjust = 0.5, size = 10),
+    axis.text.x = element_text(angle = 0, hjust = 0.5, size = 11),
     axis.text.y = element_text(size = 12),
     axis.title = element_text(size = 14, face = "bold"),
+    axis.title.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10)), 
     plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
     legend.position = "none"
   ) +
@@ -73,7 +76,7 @@ plot <- ggplot(model_count, aes(x = Model, y = Count, fill = Model)) +
   scale_fill_brewer(palette = "Set2")
 
 output_path <- file.path(output_dir, "model_selection_distribution.png")
-ggsave(output_path, plot = plot, width = 8, height = 6, dpi = 300)
+ggsave(output_path, plot = plot, width = 8, height = 5, dpi = 300)
 
 cat("Plot saved to:", output_path, "\n")
 
