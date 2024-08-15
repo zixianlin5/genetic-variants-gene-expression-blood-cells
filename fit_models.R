@@ -151,7 +151,8 @@ generate_formulas <- function(data, fixed_effects_formula, snp_columns, gene, lo
   fixed_effects <- unlist(strsplit(fixed_effects_formula, " \\+ "))
   
   # Check multicollinearity and get the final fixed effects and SNPs
-  collinearity_results <- check_multicollinearity(data, fixed_effects, snp_columns, gene, log_file = log_file)
+  collinearity_results <- check_multicollinearity(data, fixed_effects, snp_columns, 
+                                                  gene, log_file = log_file)
   
   final_fixed_effects <- collinearity_results$final_fixed_effects
   final_snp_columns <- collinearity_results$final_snp_columns
@@ -166,7 +167,9 @@ generate_formulas <- function(data, fixed_effects_formula, snp_columns, gene, lo
   full_model_formula <- as.formula(full_formula)
   
   # Interaction model formula
-  interaction_terms <- paste(sapply(final_snp_columns, function(snp) paste(snp, ":", paste0("expPC", 1:expPC_num), collapse=" + ")), collapse=" + ")
+  interaction_terms <- paste(sapply(final_snp_columns, 
+                                    function(snp) paste(snp, ":", paste0("expPC", 1:expPC_num), 
+                                                        collapse=" + ")), collapse=" + ")
   interaction_formula <- paste(full_formula, "+", interaction_terms)
   interaction_model_formula <- as.formula(interaction_formula)
   
@@ -261,7 +264,8 @@ process_gene <- function(i, assigned_genes, start_time) {
   snp_columns <- colnames(geno_data)[-1]
   
   tryCatch({
-    formulas <- generate_formulas(data, fixed_effects_formula, snp_columns, this_gene, log_file)
+    formulas <- generate_formulas(data, fixed_effects_formula, 
+                                  snp_columns, this_gene, log_file)
   }, error = function(e) {
     message <- sprintf("Error generating formulas for gene %s: %s\n", this_gene, e$message)
     write(message, file = log_file, append = TRUE)
