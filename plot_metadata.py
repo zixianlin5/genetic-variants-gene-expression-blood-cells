@@ -21,13 +21,13 @@ fig1, axes1 = plt.subplots(1, 3, figsize=(18, 6))
 
 # Subplot 1: Donor Gender Distribution as a Pie Chart
 sex_counts = unique_donors['sex'].value_counts()
-# Adjusting the labels to be placed inside the pie chart
 sex_labels = [f'{label}\n{count} ({count / len(unique_donors) * 100:.1f}%)'
               for label, count in zip(sex_counts.index, sex_counts.values)]
 
-# Plotting the pie chart with labels inside
-axes1[0].pie(sex_counts, labels=sex_labels, colors=['#7fbfbf', '#ffd17f'],
-             startangle=90, textprops={'fontsize': 14}, labeldistance=0.25)
+axes1[0].pie(sex_counts, labels=sex_labels, colors=['#ffc2c2', '#a3d1ff'],
+             startangle=90, textprops={'fontsize': 14}, labeldistance=0.25,
+             wedgeprops={'edgecolor': 'black', 'linewidth': 1.5})
+
 axes1[0].set_title('Gender Distribution of Donors', fontsize=16)
 
 # Subplot 2: Donor Age Distribution
@@ -42,7 +42,6 @@ axes1[2].set_title('Distribution of Cells Contributed by Donors', fontsize=16)
 axes1[2].set_xlabel('Number of Cells', fontsize=14)
 axes1[2].set_ylabel('Number of Donors', fontsize=14)
 
-# Adjust tick labels font size
 for ax in axes1:
     ax.tick_params(axis='both', which='major', labelsize=12)
 
