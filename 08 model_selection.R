@@ -94,9 +94,17 @@ model_count <- as.data.frame(table(model_log_df$used_model))
 colnames(model_count) <- c("Model", "Count")
 
 plot <- ggplot(model_count, aes(x = Model, y = Count, fill = Model)) +
-  geom_bar(stat = "identity",
-           width = 0.4,
-           position = position_dodge(width = 0.5)) +
+  geom_bar_pattern(
+    stat = "identity",
+    width = 0.3,                   
+    position = position_dodge(width = 0.5),
+    pattern = "stripe",          
+    pattern_angle = 45,          
+    pattern_density = 0.05,      
+    pattern_spacing = 0.03,       
+    fill = "white",               
+    color = "black"               
+  ) +
   geom_text(aes(label = Count), vjust = -0.3, size = 4.7) +
   theme_minimal() +
   theme(
@@ -109,13 +117,10 @@ plot <- ggplot(model_count, aes(x = Model, y = Count, fill = Model)) +
     axis.title = element_text(size = 14),
     axis.title.x = element_text(margin = margin(t = 10)),
     axis.title.y = element_text(margin = margin(r = 10)),
-    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
     legend.position = "none"
   ) +
-  labs(title = "Distribution of Selected Models", 
-       x = "Model Type", 
-       y = "Number of Genes") +
-  scale_fill_brewer(palette = "Set2")
+  labs(x = "Model Type", 
+       y = "Number of Genes")
 
 output_path <- file.path(output_dir, "model_selection_distribution.png")
 ggsave(
