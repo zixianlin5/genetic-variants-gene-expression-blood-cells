@@ -83,8 +83,9 @@ umap_coords <- as.data.frame(Embeddings(onek1k, reduction = "umap"))
 metadata <- onek1k@meta.data[, c("cell_type", "sex", "age")]
 
 visual_data <- cbind(pca_coordinates, umap_coords, metadata)
+visual_data$cell_name <- rownames(visual_data)
 
-file_path_visual_data <- file.path(output_dir, "visual_data.csv")
+file_path_visual_data <- file.path(input_dir, "visual_data.csv")
 write.csv(visual_data, file = file_path_visual_data, row.names = FALSE)
 
 cat("Done!")
